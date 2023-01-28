@@ -66,5 +66,11 @@ test("Sell shares (sell more shares than you have) -- exception", () => {
 test("Amount of Shares -- success", () => {
     const port = new myFunc.Portfolio();
     port.purchase("GME", 9);
-    port.numberOfShares("GME");
+    expect(port.numberOfShares("GME")).toBe(9);
+})
+
+test("Amount of Shares (no shares that you're looking for) -- success", () => {
+    const port = new myFunc.Portfolio();
+    console.log(port.numberOfShares("GME"));
+    expect(port.numberOfShares("GME")).toBe(0);
 })
