@@ -48,12 +48,19 @@ test("Sell shares -- success", () =>{
     expect(port.portfolio.get("GME")).toBe(3);
 })
 
-test("Sell shares (sell all shares of a kind -- success", () => {
+test("Sell shares (sell all shares of a kind) -- success", () => {
     const port = new myFunc.Portfolio();
     port.purchase("GME", 9);
     expect(port.numberOfShares("GME")).toBe(9);
     port.sell("GME", 9);
     expect(port.numberOfShares("GME")).toBe(0);
+})
+
+test("Sell shares (shares that you don't have) -- success", () => {
+    const port = new myFunc.Portfolio();
+    port.purchase("GME", 9);
+
+    expect(() => port.sell("GM", 9)).toThrow("ShareSaleException");
 })
 
 test("Sell shares (sell more shares than you have) -- exception", () => {

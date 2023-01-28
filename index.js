@@ -32,7 +32,12 @@ class Portfolio{
     sell(ticker, amount_of_shares){
         typeCheck_TickerAmountOfShares(ticker, amount_of_shares);
 
-        const shares = this.portfolio.get(ticker) - amount_of_shares;
+        var shares = 0;
+        if (this.portfolio.has(ticker)){
+            shares = this.portfolio.get(ticker);
+        }
+        shares -= amount_of_shares;
+        
         if (shares == 0){
             this.portfolio.delete(ticker);
         }
