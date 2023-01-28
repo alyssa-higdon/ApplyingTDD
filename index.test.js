@@ -78,6 +78,5 @@ test("Amount of Shares -- success", () => {
 
 test("Amount of Shares (no shares that you're looking for) -- success", () => {
     const port = new myFunc.Portfolio();
-    console.log(port.numberOfShares("GME"));
     expect(port.numberOfShares("GME")).toBe(0);
 })
